@@ -1,4 +1,6 @@
 {
     "python.formatting.provider": "yapf",
     "editor.formatOnSave": true,
+    // jupyter cell does not read launch.json
+    "jupyter.debugJustMyCode": false,
 }

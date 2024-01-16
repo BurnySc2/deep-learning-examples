@@ -163,3 +163,8 @@ cython_debug/
 *.pkl
 *.bin
 
+# Data / models
+models
+tokenizers
+
+
