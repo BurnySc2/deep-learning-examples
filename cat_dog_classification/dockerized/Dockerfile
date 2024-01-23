@@ -1,0 +1,32 @@
+FROM python:3.10-slim
+
+WORKDIR /ml
+
+# Update system and add poetry
+# RUN apt -y update
+RUN pip install poetry==1.5.1 --no-cache-dir
+
+# Install requirements
+ADD poetry.lock /ml/poetry.lock
+ADD pyproject.toml /ml/pyproject.toml
+RUN poetry install
+
+# RUN touch /ml/README.md
+# RUN mkdir -p deep-learning-examples
+# RUN touch /ml/deep-learning-examples/__init__.py
+
+# Add required files
+RUN mkdir -p data
+RUN mkdir -p models
+ADD train_model.py /ml/train_model.py
+ADD predict.py /ml/predict.py
+
+# Command: Run training (and save model in /ml/models)
+# docker run -v ./models:/ml/models -v ./data:/ml/data example_01 poetry run python train_model.py
+
+# Command: Predict (load model and run it)
+# docker run -v ./models:/ml/models poetry example_01 poetry run python predict.py IMAGEPATH
+
+# CMD echo "Hello from container"
+CMD poetry update
+
