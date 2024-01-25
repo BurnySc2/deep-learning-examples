@@ -43,6 +43,10 @@ dls = ImageDataLoaders.from_name_func(
     seed=42,
     label_func=is_cat,
     item_tfms=Resize(224),
+    # Prevent error:
+    # ERROR: Unexpected bus error encountered in worker. This might be caused by insufficient shared memory (shm).
+    # batch_size=64,
+    num_workers=2,
 )
 
 # Display examples

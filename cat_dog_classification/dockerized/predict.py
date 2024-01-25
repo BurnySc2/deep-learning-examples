@@ -21,9 +21,9 @@ from loguru import logger
 
 url = URLs.DOGS
 # Download and unpack dataset
-path = untar_data(url, base="/ml/data")
+path = untar_data(url, base=Path(__file__).parent / "fastai")
 
-model_file = Path("/ml/models/model.pkl")
+model_file = Path(__file__).parent / "models/model.pkl"
 
 
 # %%
